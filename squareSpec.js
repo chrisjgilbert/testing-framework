@@ -1,11 +1,23 @@
-function test_square_area(callback, expected) {
-  result = callback;
+function test(description, assertion) {
+  assertion();
+};
+
+function assertEquals(functionUnderTest, expected) {
+  result = functionUnderTest;
   if (result === expected) {
     document.getElementById("result").innerHTML = "Test passed!";
   } else {
     document.getElementById("result").innerHTML = "Test failed!";
+    throw new Error ('Expect result: ' + expected + ' Actual result: ' + result)
   }
 };
 
-test_square_area(square(3), 9); // passing test
-test_square_area(square(3), 2345); // failing test
+test('a passing test', function() {
+    var square = new Square(10);
+    assertEquals(square.area(), 100);
+});
+
+// test('a failing test', function() {
+//     var square = new Square(10);
+//     assertEquals(square.area(), 3);
+// });
