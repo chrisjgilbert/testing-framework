@@ -1,18 +1,24 @@
-function test(description, callback) {
-  callback();
+function test(description, assertion) {
+  printDescription(description);
+  assertion();
 };
 
 function assertEquals(result, expected) {
   if (result === expected) {
-    printResult('passed');
+    printResult('passed', 'green');
   } else {
-    printResult('fail');
-    throw new Error ('Expect result: ' + expected + ' Actual result: ' + result)
+    printResult('fail', 'red');
+    throw new Error('Expect result: ' + expected + ' Actual result: ' + result)
   }
 };
 
-function printResult(result) {
+function printResult(result, color) {
   document.getElementById("result").innerHTML = "Test "+ result +"!";
+  document.getElementById("result").style.color = color
+}
+
+function printDescription(description) {
+  document.getElementById("description").innerHTML = description;
 }
 
 test('a passing test', function() {
