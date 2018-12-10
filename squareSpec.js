@@ -20,7 +20,7 @@ test('a passing test', function() {
     assertEquals(square.area(), 100);
 });
 
-// test('a failing test', function() {
-//     var square = new Square(10);
-//     assertEquals(square.area(), 3);
-// });
+test('a failing test', function() {
+    var square = new Square(10);
+    assertEquals(square.area(), 3);
+});
