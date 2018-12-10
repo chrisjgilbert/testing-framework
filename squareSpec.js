@@ -1,23 +1,27 @@
-function test(description, assertion) {
-  assertion();
+function test(description, callback) {
+  callback();
 };
 
 function assertEquals(functionUnderTest, expected) {
   result = functionUnderTest;
   if (result === expected) {
-    document.getElementById("result").innerHTML = "Test passed!";
+    printResult('passed');
   } else {
-    document.getElementById("result").innerHTML = "Test failed!";
+    printResult('fail');
     throw new Error ('Expect result: ' + expected + ' Actual result: ' + result)
   }
 };
+
+function printResult(result) {
+  document.getElementById("result").innerHTML = "Test "+ result +"!";
+}
 
 test('a passing test', function() {
     var square = new Square(10);
     assertEquals(square.area(), 100);
 });
 
-// test('a failing test', function() {
-//     var square = new Square(10);
-//     assertEquals(square.area(), 3);
-// });
+test('a failing test', function() {
+    var square = new Square(10);
+    assertEquals(square.area(), 3);
+});
