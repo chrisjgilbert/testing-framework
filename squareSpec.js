@@ -4,12 +4,7 @@ function test(description, assertion) {
 };
 
 function assertEquals(result, expected) {
-  if (result === expected) {
-    printResult('passed', 'green');
-  } else {
-    printResult('fail', 'red');
-    throw new Error('Expect result: ' + expected + ' Actual result: ' + result)
-  }
+  return (result === expected ? passTest() : failTest(result, expected));
 };
 
 function printResult(result, color) {
@@ -20,6 +15,16 @@ function printResult(result, color) {
 function printDescription(description) {
   document.getElementById("description").innerHTML = description;
 }
+
+function passTest() {
+  printResult('passed', 'green');
+}
+
+function failTest(result, expected) {
+  printResult('fail', 'red');
+  throw new Error('Expect result: ' + expected + ' Actual result: ' + result)
+}
+
 
 test('a passing test', function() {
     var square = new Square(10);
