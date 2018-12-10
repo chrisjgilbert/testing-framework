@@ -1,3 +1,5 @@
+'use strict';
+
 var testjs = {
 
   test: function(description, assertion) {
@@ -33,7 +35,7 @@ testjs.test('a passing test', function() {
     testjs.assertEquals(square.area(), 100);
 });
 
-testjs.test('a failing test', function() {
-    var square = new Square(10);
-    testjs.assertEquals(square.area(), 1);
-});
+// testjs.test('a failing test', function() {
+//     var square = new Square(10);
+//     testjs.assertEquals(square.area(), 1);
+// });
